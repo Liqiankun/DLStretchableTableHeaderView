@@ -1,2 +1,2 @@
-# DLStretchableTableHeaderView
-TableView with strechable header
+![](https://github.com/Liqiankun/DLStretchableTableHeaderView/raw/master/header.gif)
+
