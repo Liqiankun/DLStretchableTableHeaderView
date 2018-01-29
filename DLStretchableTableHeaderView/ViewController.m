@@ -21,14 +21,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
-    CGRect frame = CGRectMake(0, 0, SCREEN_WHITH, SCREEN_WHITH / RATIO);
+    CGRect frame = CGRectMake(0, 0, SCREEN_WHITH, SCREEN_WHITH / RATIO );
+    CGRect imageFrame = frame;
+    imageFrame.size.height += 20;
     self.strechableImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"header"]];
-    self.strechableImageView.frame = frame;
-    self.originFrame = frame;
+    self.strechableImageView.frame = imageFrame;
+    self.originFrame = imageFrame;
     [self.view addSubview:self.strechableImageView];
     
-    self.tableView = [[UITableView alloc] initWithFrame:self.view.frame];
+    CGRect tableViewFrame = self.view.frame;
+    tableViewFrame.origin.y = 20;
+    tableViewFrame.size.height -=20;
+    self.tableView = [[UITableView alloc] initWithFrame: tableViewFrame];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.showsVerticalScrollIndicator = NO;
@@ -39,8 +43,7 @@
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
     [self.view addSubview:self.tableView];
-
-    UIView *headerView = [[UIView alloc] initWithFrame:frame];
+    UIView *headerView = [[UIView alloc] initWithFrame: frame];
     headerView.backgroundColor = [UIColor clearColor];
     self.tableView.tableHeaderView = headerView;
     
@@ -75,7 +78,6 @@
         });
     }
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
